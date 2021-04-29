@@ -104,7 +104,7 @@ docker build -t osintgram .
 Run:
 
 ```
-docker run --rm -it -v "$PWD/output:/home/osintgram/output" osintgram <target>
+docker run --rm -v "$PWD/output:/home/osintgram/output" osintgram <target>
 ```
 
 - The `<target>` is the Instagram account you wish to use as your target for recon.
