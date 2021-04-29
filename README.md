@@ -57,7 +57,7 @@ Allows you an easy way to automatically download all posts from the target  acco
 
 1. Fork/Clone/Download this repo
 
-    `git clone https://github.com/ryan_van_mass/Osintgram.git`
+    `git clone https://github.com/ryanvanmass/Osintgram.git`
 
 2. Navigate to the directory
 
