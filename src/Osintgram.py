@@ -836,7 +836,11 @@ class Osintgram:
 
         limit = -1
         pc.printout("How many photos you want to download (default all): ", pc.YELLOW)
-        user_input = input()
+        
+    #main.py
+        #user_input = input()
+    #AutoDownload.py
+        user_input = ""
         try:
             if user_input == "":
                 pc.printout("Downloading all photos available...\n")

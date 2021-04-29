@@ -17,6 +17,7 @@ Disclaimer: **The contributors do not assume any responsibility for the use of t
 Warning: It is advisable to **not** use your own/primary account when using this tool.
 
 ## Tools and Commands 🧰
+### main.py
 
 Osintgram offers an interactive shell to perform analysis on Instagram account of any users by its nickname. You can get:
 
@@ -49,47 +50,46 @@ You can find detailed commands usage [here](doc/COMMANDS.md).
 [Commands](doc/COMMANDS.md) |
 [CHANGELOG](doc/CHANGELOG.md)
 
+### AutoDownload.py
+Allows you an easy way to automatically download all posts from the target  account
+
 ## Installation ⚙️
 
 1. Fork/Clone/Download this repo
 
-    `git clone https://github.com/Datalux/Osintgram.git`
+    `git clone https://github.com/ryan_van_mass/Osintgram.git`
 
 2. Navigate to the directory
 
     `cd Osintgram`
 
-3. Create a virtual environment for this project
+3. Run `pip3 install -r requirements.txt`
 
-    `python3 -m venv venv`
-
-4. Load the virtual environment
-   - On Windows Powershell: `.\venv\Scripts\activate.ps1`
-   - On Linux and Git Bash: `source venv/bin/activate`
-  
-5. Run `pip install -r requirements.txt`
-
-6. Open the `credentials.ini` file in the `config` folder and write your Instagram account username and password in the corresponding fields
+4. Open the `credentials.ini` file in the `config` folder and write your Instagram account username and password in the corresponding fields
     
     Alternatively, you can run the `make setup` command to populate this file for you.
 
-7. Run the main.py script
+5. Run the main.py script
 
     `python3 main.py <target username>`
+OR
+5. run the AutoDownload.py script
+    
+    `python3 AutoDownload.py <target username>`
 
 ## Docker Quick Start 🐳
 
-This section will explain how you can quickly use this image with `Docker` or `Docker-compose`.
+This section will explain how you can quickly use this image with `Docker`.
 
 ### Prerequisites
 
-Before you can use either `Docker` or `Docker-compose`, please ensure you do have the following prerequisites met.
+Before you can use either `Docker`, please ensure you do have the following prerequisites met.
 
 1. **Docker** installed - [link](https://docs.docker.com/get-docker/)
-2. **Docker-composed** installed (if using Docker-compose) - [link](https://docs.docker.com/compose/install/)
-3. **Credentials** configured - This can be done manually or by running the `make setup` command from the root of this repo
+2. **Credentials** configured - This can be done manually or by running the `make setup` command from the root of this repo
 
 **Important**: Your container will fail if you do not do step #3 and configure your credentials
+**Note**: By default the container is set up to only run the AutoDownload.py script
 
 ### Docker
 
@@ -97,13 +97,13 @@ If docker is installed you can build an image and run this as a container.
 
 Build:
 
-```bash
+```
 docker build -t osintgram .
 ```
 
 Run:
 
-```bash
+```
 docker run --rm -it -v "$PWD/output:/home/osintgram/output" osintgram <target>
 ```
 
@@ -113,52 +113,7 @@ docker run --rm -it -v "$PWD/output:/home/osintgram/output" osintgram <target>
 - The optional `--rm` flag removes the container filesystem on completion to prevent cruft build-up. [docs](https://docs.docker.com/engine/reference/run/#clean-up---rm)
 - The optional `-t` flag allocates a pseudo-TTY which allows colored output. [docs](https://docs.docker.com/engine/reference/run/#foreground)
 
-### Using `docker-compose`
-
-You can use the `docker-compose.yml` file this single command:
-
-```bash
-docker-compose run osintgram <target>
-```
-
-Where `target` is the Instagram target for recon.
-
-Alternatively you may run `docker-compose` with the `Makefile`:
-
-`make run` - Builds and Runs with compose. Prompts for a `target` before running.
-
-### Makefile (easy mode)
-
-For ease of use with Docker-compose, a `Makefile` has been provided.
-
-Here is a sample work flow to spin up a container and run `osintgram` with just two commands!
-
-1. `make setup`   - Sets up your Instagram credentials
-2. `make run`     - Builds and Runs a osintgram container and prompts for a target
-
-Sample workflow for development:
-
-1. `make setup`          - Sets up your Instagram credentials
-2. `make build-run-testing`   - Builds an Runs a container without invoking the `main.py` script. Useful for an `it` Docker session for development
-3. `make cleanup-testing`     - Cleans up the testing container created from `build-run-testing`
-
-## Development version 💻
-
-To use the development version with the latest feature and fixes just switch to `development` branch using Git:
-
-`git checkout development`
-
-## Updating ⬇️
-
-and update to last version using:
-
-`git pull origin development`
-
-## Contributing 💡
-
-You can propose a feature request opening an issue or a pull request.
-
-Here is a list of Osintgram's contributors:
+## Here is a list of Osintgram's contributors:
 
 <a href="https://github.com/Datalux/Osintgram/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=Datalux/Osintgram" />

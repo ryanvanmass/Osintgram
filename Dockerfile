@@ -19,8 +19,8 @@ RUN pip3 install -r requirements.txt -f /wheels \
   && rm requirements.txt
 
 COPY --chown=osintgram:osintgram src/ /home/osintgram/src
-COPY --chown=osintgram:osintgram main.py /home/osintgram/
+COPY --chown=osintgram:osintgram AutoDownload.py /home/osintgram/
 COPY --chown=osintgram:osintgram config/ /home/osintgram/config
 USER osintgram
 
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "AutoDownload.py"]
