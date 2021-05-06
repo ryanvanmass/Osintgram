@@ -98,13 +98,19 @@ If docker is installed you can build an image and run this as a container.
 Build:
 
 ```
-docker build -t osintgram .
+#Build Main Program
+docker build -t osintgram Osintgram_Dockerfile
+
+or 
+
+#Build AutoDownload Sub-Program
+docker build -t autodownload AutoDownload_Dockerfile
 ```
 
 Run:
 
 ```
-docker run --rm -v "$PWD/output:/home/osintgram/output" osintgram <target>
+docker run --rm -v "$PWD/output:/home/osintgram/output" <Image Name> <target username>
 ```
 
 - The `<target>` is the Instagram account you wish to use as your target for recon.
